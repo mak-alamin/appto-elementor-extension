@@ -31,6 +31,7 @@ final class AppTo_Elementor_Extension {
 	 */
 	const VERSION = '1.0.0';
 
+
 	/**
 	 * Minimum Elementor Version
 	 *
@@ -40,6 +41,7 @@ final class AppTo_Elementor_Extension {
 	 */
 	const MINIMUM_ELEMENTOR_VERSION = '2.0.0';
 
+
 	/**
 	 * Minimum PHP Version
 	 *
@@ -48,6 +50,7 @@ final class AppTo_Elementor_Extension {
 	 * @var string Minimum PHP version required to run the plugin.
 	 */
 	const MINIMUM_PHP_VERSION = '7.0';
+
 
 	/**
 	 * Instance
@@ -60,6 +63,7 @@ final class AppTo_Elementor_Extension {
 	 * @var AppTo_Elementor_Extension The single instance of the class.
 	 */
 	private static $_instance = null;
+
 
 	/**
 	 * Instance
@@ -82,6 +86,7 @@ final class AppTo_Elementor_Extension {
 
 	}
 
+
 	/**
 	 * Constructor
 	 *
@@ -95,6 +100,7 @@ final class AppTo_Elementor_Extension {
 		add_action( 'elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories'] );
 
 	}
+
 
 	/**
 	 * Load Textdomain
@@ -112,6 +118,7 @@ final class AppTo_Elementor_Extension {
 		load_plugin_textdomain( 'appto-extension' );
 
 	}
+
 
 	/**
 	 * On Plugins Loaded
@@ -132,6 +139,7 @@ final class AppTo_Elementor_Extension {
 		}
 
 	}
+
 
 	/**
 	 * Compatibility Checks
@@ -167,6 +175,7 @@ final class AppTo_Elementor_Extension {
 
 	}
 
+
 	/**
 	 * Initialize the plugin
 	 *
@@ -189,6 +198,7 @@ final class AppTo_Elementor_Extension {
 
 	}
 
+
 	/**
 	 * APPTO Widget Category
 	 *
@@ -207,6 +217,7 @@ final class AppTo_Elementor_Extension {
 		);
 	}
 
+
 	/**
 	 * Init Widgets
 	 *
@@ -217,14 +228,15 @@ final class AppTo_Elementor_Extension {
 	 * @access public
 	 */
 	public function init_widgets() {
-
 		//Include Widget files
 		require_once( __DIR__ . '/widgets/slider-widget.php' );
+		require_once( __DIR__ . '/widgets/Tab_Horizon.php' );
 
 		//Register widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Slider_Widget() );
-
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Tab_Horizon() );
 	}
+
 
 	/**
 	 * Init Controls
@@ -244,7 +256,8 @@ final class AppTo_Elementor_Extension {
 		// \Elementor\Plugin::$instance->controls_manager->register_control( 'control-type-', new \Test_Control() );
 
 	}
-	
+
+
 	/**
 	 * Admin notice
 	 *
@@ -268,6 +281,7 @@ final class AppTo_Elementor_Extension {
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 
 	}
+
 
 	/**
 	 * Admin notice
@@ -293,6 +307,7 @@ final class AppTo_Elementor_Extension {
 		printf( '<div class="notice notice-warning is-dismissible"><p>%1$s</p></div>', $message );
 
 	}
+
 
 	/**
 	 * Admin notice

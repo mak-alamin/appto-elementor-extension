@@ -1,8 +1,11 @@
-<?php 
+<?php
+/**
+ * Class Slider_Widget
+ */
 
 class Slider_Widget extends \Elementor\Widget_Base{
 
-    public function get_name() {
+	public function get_name(): string {
         return 'banner_slider';
     }
 
@@ -10,11 +13,11 @@ class Slider_Widget extends \Elementor\Widget_Base{
         return __('Banner Slider', 'appto-extension');
     }
 
-	public function get_icon() {
+	public function get_icon(): string {
         return 'eicon-slides';
     }
 
-	public function get_categories() {
+	public function get_categories(): array {
         return ['appto'];
     }
 

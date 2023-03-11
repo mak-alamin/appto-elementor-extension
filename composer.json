@@ -1,0 +1,17 @@
+{
+    "name": "appto/appto-elementor-extension",
+    "type": "wordpress-plugin",
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "inc/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mak Alamin",
+            "email": "makalamin012@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

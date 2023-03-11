@@ -4,8 +4,12 @@
  * Class Banner_Slider
  */
 
+namespace Inc\Widgets\Banner_Slider;
+
 class Banner_Slider extends \Elementor\Widget_Base
 {
+	use \Inc\Traits\Elementor\Controls;
+
 	private $anim_file = '';
 	private $bg_grdnt = 'blue'; //grdnt-blue 
 	private $bg_style = 'wave'; //wave, wave-zig
@@ -32,17 +36,7 @@ class Banner_Slider extends \Elementor\Widget_Base
 
 	protected function _register_controls()
 	{
-		$content_controls = array_diff(scandir(__DIR__ . '/controls/content-controls'), array('.', '..'));
-
-		$style_controls = array_diff(scandir(__DIR__ . '/controls/style-controls'), array('.', '..'));
-
-		foreach ($content_controls as $key => $file) {
-			require_once __DIR__ . '/controls/content-controls/' . $file;
-		}
-
-		foreach ($style_controls as $key => $file) {
-			require_once __DIR__ . '/controls/style-controls/' . $file;
-		}
+		$this->require_control_files(__DIR__);
 	}
 
 	protected function render()

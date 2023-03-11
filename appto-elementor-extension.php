@@ -196,7 +196,8 @@ final class AppTo_Elementor_Extension
 		add_action('elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories']);
 
 		add_action('elementor/widgets/widgets_registered', [$this, 'init_widgets']);
-		add_action('elementor/controls/controls_registered', [$this, 'init_controls']);
+
+		// add_action('elementor/controls/controls_registered', [$this, 'init_controls']);
 	}
 
 	/**
@@ -241,13 +242,13 @@ final class AppTo_Elementor_Extension
 	 */
 	public function init_widgets()
 	{
-		//Include Widget files
-		require_once(__DIR__ . '/Widgets/Banner_Slider/Banner_Slider.php');
-		require_once(__DIR__ . '/Widgets/Tab_Horizon/Tab_Horizon.php');
+		//Include autoload files
+		require_once __DIR__ . '/vendor/autoload.php';
 
 		//Register widget
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Banner_Slider());
-		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new \Tab_Horizon());
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Inc\Widgets\Banner_Slider\Banner_Slider());
+
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Inc\Widgets\Tab_Horizon\Tab_Horizon());
 	}
 
 

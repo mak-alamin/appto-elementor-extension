@@ -245,10 +245,20 @@ final class AppTo_Elementor_Extension
 		//Include autoload files
 		require_once __DIR__ . '/vendor/autoload.php';
 
-		//Register widget
+		//Register Banner_Slider widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Inc\Widgets\Banner_Slider\Banner_Slider());
 
+		//Register Tab_Horizon widget
 		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Inc\Widgets\Tab_Horizon\Tab_Horizon());
+
+		//Register Carousel widget
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Inc\Widgets\Carousel\Carousel());
+
+		//Register Testimonial widget
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Inc\Widgets\Testimonial\Testimonial());
+
+		//Register Post_Grid widget
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Inc\Widgets\Post_Grid\Post_Grid());
 	}
 
 

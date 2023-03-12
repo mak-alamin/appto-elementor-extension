@@ -39,6 +39,16 @@ class Banner_Slider extends \Elementor\Widget_Base
 		$this->require_control_files(__DIR__);
 	}
 
+	public function get_script_depends()
+	{
+		return [
+			'bundle-js',
+			'twinlight-js',
+			'wavify-jquery',
+			'main-js'
+		];
+	}
+
 	protected function render()
 	{
 		$settings = $this->get_settings_for_display();

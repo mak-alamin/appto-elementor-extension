@@ -117,13 +117,5 @@ class Tab_Horizon extends \Elementor\Widget_Base
 			</div>
 		</div>
 <?php
-
-		if (is_admin()) {
-			// solves the width issue
-			if (!defined('ELEMENTOR_VERSION')) {
-				return;
-			}
-			echo "<script>jQuery('.owl-carousel').owlCarousel();</script>";
-		}
 	}
 }

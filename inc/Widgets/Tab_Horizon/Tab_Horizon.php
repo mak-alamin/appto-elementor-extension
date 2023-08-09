@@ -37,22 +37,19 @@ class Tab_Horizon extends \Elementor\Widget_Base
 
 	public function get_script_depends()
 	{
-		return [
-			'bundle-js',
-			'twinlight-js',
-			'wavify-jquery',
-			'main-js'
-		];
+		return [];
 	}
 
 	protected function render()
 	{
 		$tabs = $this->get_settings_for_display()['horizon_tabs'];
+		$phone_image = $this->get_settings_for_display()['phone_bg_image'];
 
 		// echo '<pre>';
 		// print_r($tabs);
 		// echo '</pre>';
 		// die();
+		
 
 ?>
 		<div class="tab tab-horizon col-sm-6">
@@ -66,7 +63,7 @@ class Tab_Horizon extends \Elementor\Widget_Base
 
 						$icon_class = $tab['icon']['value'];
 
-						echo "<li class='owl-dot $active'>";
+						echo "<li class='owl-dot $active' data-id='tab_horizon_$id'>";
 
 						echo "<a href='#tab_horizon_$id' data-toggle='tab'>
 							<div class='icon icon-sm'>
@@ -79,7 +76,9 @@ class Tab_Horizon extends \Elementor\Widget_Base
 					?>
 				</ul>
 			</div>
+
 			<div class="spce"></div>
+
 			<div class="tab-content">
 				<!-- flight section -->
 				<?php
@@ -103,7 +102,14 @@ class Tab_Horizon extends \Elementor\Widget_Base
 
 		<div class="col-sm-6 col-md-4 col-md-offset-2 col-sm-offset-0 text-center">
 			<div class="slide-side">
-				<img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/phone.png">
+				<?php if (!empty($phone_image['url'])) {
+					$imageUrl = $phone_image['url'];
+					$imageAlt = $phone_image['alt'];
+
+					echo "<img alt='$imageAlt' src='$imageUrl'>";
+				}
+
+				?>
 				<div class="owl-carousel nplr app-slide">
 					<?php
 					foreach ($tabs as $key => $tab) {
@@ -116,6 +122,35 @@ class Tab_Horizon extends \Elementor\Widget_Base
 				</div>
 			</div>
 		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+		<script>
+			var $appSlide = jQuery('.app-slide')
+			if ($appSlide.length > 0) {
+				$appSlide.owlCarousel({
+					loop: true,
+					center: true,
+					margin: 0,
+					autoWidth: true,
+					nav: false,
+					dots: true,
+					ouchDrag: false,
+					mouseDrag: false,
+					dotsContainer: '.tab-list'
+				})
+
+				jQuery('.owl-dot').on('click', function() {
+					$appSlide.trigger('to.owl.carousel', [$(this).index(), 300]);
+
+					jQuery(".tab-horizon .tab-content .tab-pane").removeClass("active");
+
+					var currentTab = '#'+jQuery(this).data("id");
+
+					jQuery(currentTab).addClass("active");
+				});
+			}
+		</script>
 <?php
 	}
 }

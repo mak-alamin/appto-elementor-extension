@@ -1,11 +1,21 @@
 <?php
-
-//Content Controls Section Starts
+// Tabs
 $this->start_controls_section(
     'tab_horizon_content',
     [
-        'label' => __('Tabs', 'appto-extension'),
+        'label' => __('Tabs & Slides', 'appto-extension'),
         'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+    ]
+);
+
+$this->add_control(
+    'phone_bg_image',
+    [
+        'label' => __('Phone Image', 'appto-extension'),
+        'type' => \Elementor\Controls_Manager::MEDIA,
+        'default' => [
+            'url' => \Elementor\Utils::get_placeholder_image_src(),
+        ]
     ]
 );
 
@@ -13,7 +23,7 @@ $this->start_controls_section(
 $this->add_control(
     'horizon_tabs',
     [
-        'label' => __('Tab Items', 'appto-extension'),
+        'label' => __('Items', 'appto-extension'),
         'type' => \Elementor\Controls_Manager::REPEATER,
         'fields' => [
             [

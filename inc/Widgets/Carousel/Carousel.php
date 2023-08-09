@@ -17,7 +17,7 @@ class Carousel extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('AppTo Carousel', 'appto-extension');
+        return __('Image Carousel', 'appto-extension');
     }
 
     public function get_icon(): string
@@ -37,46 +37,61 @@ class Carousel extends \Elementor\Widget_Base
 
     public function get_script_depends()
     {
-        return [
-            'bundle-js',
-            'twinlight-js',
-            'wavify-jquery',
-            'main-js'
-        ];
+        return [];
     }
 
     protected function render()
     {
-        $tabs = $this->get_settings_for_display()['horizon_tabs'];
+        $images = $this->get_settings_for_display()['image_carousel_gallery'];
 
         // echo '<pre>';
-        // print_r($tabs);
+        // print_r($images);
         // echo '</pre>';
         // die();
 
 ?>
         <div class="screenshot carousel slide carousel-fade">
             <div class="owl-carousel screen nplr screen-loop">
-                <div>
-                    <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/screen3.jpg">
-                </div>
-                <div>
-                    <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/screenshot-img-1.jpg">
-                </div>
-                <div>
-                    <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/screenshot-img-1.jpg">
-                </div>
-                <div>
-                    <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/screen3.jpg">
-                </div>
-                <div>
-                    <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/screenshot-img-1.jpg">
-                </div>
-                <div>
-                    <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/screenshot-img-1.jpg">
-                </div>
+                <?php
+                if (!empty($images)) {
+                    foreach ($images as $key => $image) {
+                ?>
+                        <div>
+                            <img alt="" src="<?php echo $image['url']; ?>">
+                        </div>
+                <?php  }
+                } ?>
             </div>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+        <script>
+            var $screenLoop = jQuery('.screen-loop')
+            if ($screenLoop.length > 0) {
+                $screenLoop.owlCarousel({
+                    center: true,
+                    loop: true,
+                    nav: false,
+                    autoplay: true,
+                    autoplayTimeout: 2000,
+                    margin: 25,
+                    responsive: {
+                        320: {
+                            items: 1,
+                            margin: 10
+                        },
+                        481: {
+                            items: 3,
+                            margin: 60
+                        },
+                        991: {
+                            items: 4
+                        }
+                    }
+                });
+            }
+        </script>
 <?php
     }
 }

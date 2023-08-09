@@ -37,12 +37,7 @@ class Testimonial extends \Elementor\Widget_Base
 
     public function get_script_depends()
     {
-        return [
-            'bundle-js',
-            'twinlight-js',
-            'wavify-jquery',
-            'main-js'
-        ];
+        return [];
     }
 
     protected function render()
@@ -83,6 +78,29 @@ class Testimonial extends \Elementor\Widget_Base
                 </div>
             </div>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+        <script>
+            var quoteCarousel = jQuery('.quote');
+            if (quoteCarousel.length > 0) {
+                quoteCarousel.owlCarousel({
+                    loop: true,
+                    autoplay: true,
+                    autoplayTimeout: 2500,
+                    margin: 10,
+                    nav: false,
+                    responsive: {
+                        300: {
+                            items: 1,
+                        },
+                        768: {
+                            items: 2,
+                        }
+                    }
+                })
+            }
+        </script>
 <?php
     }
 }

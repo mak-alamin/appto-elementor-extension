@@ -42,6 +42,7 @@ class Banner_Slider extends \Elementor\Widget_Base
 	public function get_script_depends()
 	{
 		return [
+			'owl-carousel-js',
 			'bundle-js',
 			'twinlight-js',
 			'wavify-jquery',
@@ -94,8 +95,14 @@ class Banner_Slider extends \Elementor\Widget_Base
 												<p class="subtitle"><?php echo $item['subtitle']; ?>
 												</p>
 												<div class="btn-holder">
-													<a class="btn grdnt-green" href="#"><?php echo $item['button_1']; ?></a>
-													<a class="btn grdnt-orange" href="#"><?php echo $item['button_2']; ?></a>
+													<?php if (!empty($item['button_1'])) { ?>
+														<a class="btn grdnt-green" href="#"><?php echo $item['button_1']; ?></a>
+													<?php } ?>
+
+													<?php if (!empty($item['button_2'])) { ?>
+														<a class="btn grdnt-orange" href="#"><?php echo $item['button_2']; ?></a>
+													<?php } ?>
+
 												</div>
 											</div>
 										</div>

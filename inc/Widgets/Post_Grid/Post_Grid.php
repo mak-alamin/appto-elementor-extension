@@ -64,7 +64,7 @@ class Post_Grid extends \Elementor\Widget_Base
 
     protected function render()
     {
-        $tabs = $this->get_settings_for_display()['Post_Grids'];
+        $tabs = $this->get_settings_for_display()['appto_post_grids'];
 
         // echo '<pre>';
         // print_r($tabs);

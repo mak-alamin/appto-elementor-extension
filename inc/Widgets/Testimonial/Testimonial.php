@@ -42,41 +42,31 @@ class Testimonial extends \Elementor\Widget_Base
 
     protected function render()
     {
-        $tabs = $this->get_settings_for_display()['testimonials'];
-
-        // echo '<pre>';
-        // print_r($tabs);
-        // echo '</pre>';
-        // die();
+        $testimonials = $this->get_settings_for_display()['appto_testimonials'];
 ?>
         <div class="owl-carousel quote">
-            <div class="quote-wrapper">
-                <p class="quote-text">Lorem ipsum dolor sit amet, eu debet utinam vim. Idque accusam ea sit repudiandae id. Quo ex alia natum tritani, dolorum persequeris.</p>
-                <div class="spce"></div>
-                <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/profile-img-3.jpg">
-                <div class="light">
-                    <h6>Roger Bentham</h6>
-                    <p class="meta">Author, Magento</p>
+            <?php foreach ($testimonials as $key => $testimonial) { ?>
+                <div class="quote-wrapper">
+                    <div class="quote-text"><?php echo $testimonial['content']; ?></div>
+                    
+                    <div class="spce"></div>
+
+                    <?php
+                    if (!empty($testimonial['image']['url'])) {
+                        $imgUrl = $testimonial['image']['url'];
+                        $imgAlt = $testimonial['image']['alt'];
+
+                        echo '<img alt="' . $imgAlt . '" src="' . $imgUrl . '">';
+                    }
+                    ?>
+
+                    <div class="light">
+                        <h6><?php echo $testimonial['client_name']; ?></h6>
+                        <p class="meta"><?php echo $testimonial['title']; ?></p>
+                    </div>
                 </div>
-            </div>
-            <div class="quote-wrapper">
-                <p class="quote-text">Lorem ipsum dolor sit amet, eu debet utinam vim. Idque accusam ea sit repudiandae id. Quo ex alia natum tritani, dolorum persequeris.</p>
-                <div class="spce"></div>
-                <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/profile-img-3.jpg">
-                <div class="light">
-                    <h6>Roger Bentham</h6>
-                    <p class="meta">Author, Magento</p>
-                </div>
-            </div>
-            <div class="quote-wrapper">
-                <p class="quote-text">Lorem ipsum dolor sit amet, eu debet utinam vim. Idque accusam ea sit repudiandae id. Quo ex alia natum tritani, dolorum persequeris.</p>
-                <div class="spce"></div>
-                <img alt="" src="http://localhost/appto/appto-main/wp-content/uploads/2023/03/profile-img-3.jpg">
-                <div class="light">
-                    <h6>Paulo Mark</h6>
-                    <p class="meta">CEO, It Founadtion</p>
-                </div>
-            </div>
+            <?php } ?>
+
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>

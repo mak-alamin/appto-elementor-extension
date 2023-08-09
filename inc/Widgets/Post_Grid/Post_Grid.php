@@ -27,7 +27,7 @@ class Post_Grid extends \Elementor\Widget_Base
 
     public function get_icon(): string
     {
-        return 'eicon-tabs';
+        return 'eicon-posts-grid';
     }
 
     public function get_categories(): array
@@ -64,85 +64,50 @@ class Post_Grid extends \Elementor\Widget_Base
 
     protected function render()
     {
-        $tabs = $this->get_settings_for_display()['appto_post_grids'];
+        $posts = get_posts(array(
+            'numberposts' => 3
+        ));
 
-        // echo '<pre>';
-        // print_r($tabs);
-        // echo '</pre>';
-        // die();
+        echo '<div class="post appto-posts">';
+
+        foreach ($posts as $key => $post) {
+            $dateTime = new \DateTime($post->post_date);
+            $formattedDate = $dateTime->format('M d, Y');
+
+            $content = $post->post_excerpt;
+
+            if(empty($post->post_excerpt)){  
+                $words = explode(' ', $post->post_content);
+
+                $content = implode(' ', array_slice($words, 0, 10));
+            }
 ?>
-        <div class="post">
             <div class="col-md-6 res-margin">
                 <div class="post-col">
-                    <a href="blog-single-1.html"><img alt="" src="image/blog-img-1.jpg"></a>
+                    <a href="<?php echo get_the_permalink($post->ID); ?>"><?php echo get_the_post_thumbnail($post->ID, 'full'); ?></a>
                     <div class="post-content">
                         <div class="spce md"></div>
                         <ul class="post-meta clearfix">
-                            <li>Jan 20, 2018</li>
+                            <li><?php echo $formattedDate; ?></li>
                             <li>
-                                <a href="blog-single-1.html"><i class="fa fa-heart-o" aria-hidden="true"></i>112</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-comment-o" aria-hidden="true"></i>22</a>
+                                <a href=""><i class="eicon-commenting-o" aria-hidden="true"></i><?php echo $post->comment_count; ?></a>
                             </li>
                         </ul>
                         <div class="post-text">
                             <a href="blog-single-1.html">
-                                <h5>Ultimate goal of future technology in near future.</h5>
+                                <h5><?php echo $post->post_title; ?></h5>
                                 <div class="spce"></div>
-                                <p>Lorem ipsum dolor sit amet, ridens eligendi an nec, his nostro dolorum splendide te. Docendi intellegebat eu pro, ius in facilis reprimique. Primis aliquando vis ne. At per diceret numquam. Ne vim aliquid accusamus
-                                    Lorem ipsum dolor sit amet ridens eligendi an nec, his nostro dolorum splendide te. Docendi intellegebat eu pro, ius in facilis reprimique. Primis aliquando vis ne. At per diceret numquam</p>
+                                <div><?php echo $content; ?></div>
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="post-col">
-                    <a href="blog-single-1.html"><img alt="" src="image/blog-img-2.jpg"></a>
-                    <div class="post-content">
-                        <div class="spce"></div>
-                        <ul class="post-meta clearfix">
-                            <li>Jan 19, 2018</li>
-                            <li>
-                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>112</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-comment-o" aria-hidden="true"></i>22</a>
-                            </li>
-                        </ul>
-                        <div class="post-text">
-                            <a href="blog-single-1.html">
-                                <h5>How to add custom design in mobile app.</h5>
-                                <p>Lorem ipsum dolor sit amet, ridens eligendi an nec, his nostro dolorum splendide te. Docendi intellegebat eu pro. his nostro dolorum eu pro.</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="spce"></div>
-                <div class="post-col">
-                    <a href="blog-single-1.html"><img alt="" src="image/blog-img-3.jpg"></a>
-                    <div class="post-content">
-                        <div class="spce"></div>
-                        <ul class="post-meta clearfix">
-                            <li>Jan 18, 2018</li>
-                            <li>
-                                <a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i>112</a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-comment-o" aria-hidden="true"></i>22</a>
-                            </li>
-                        </ul>
-                        <div class="post-text">
-                            <a href="blog-single-1.html">
-                                <h5>Top 10 revoulationary app for your every day life.</h5>
-                                <p>Lorem ipsum dolor sit amet, ridens eligendi an nec his nostro dolorum splendide te intellegebat eu pro.</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </div> <!-- ./post-col -->
+            </div> <!-- ./col-md-6 -->
 <?php
+        }
+
+        echo '<div class="spce"></div>';
+
+        echo  '</div>'; // ./posts
     }
 }

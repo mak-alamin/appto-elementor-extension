@@ -41,45 +41,34 @@ $this->add_control(
 
 $this->end_controls_section();
 
-//Title Style Controls Start
+//Title Style
 $this->start_controls_section('slider_title_style', [
     'label' => __('Title Style', 'appto-extension'),
     'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 ]);
 
-$this->add_control(
-    'title_color',
-    [
-        'label' => __('Text Color', 'appto-extension'),
-        'type' => \Elementor\Controls_Manager::COLOR,
-        'default' => '#fefefe',
-        'selectors' => [
-            '{{WRAPPER}} .slide_title' => 'color: {{VALUE}};',
-        ]
+$this->color_typography_controls(array(
+    'id' => 'banner_slider_title',
+    'selectors' => [
+        '{{WRAPPER}} .slide_title', '{{WRAPPER}} .slider_id'
     ]
-);
+));
 
 $this->end_controls_section();
-//Title Style Controls End
+//Title Style Ends
 
-
-//Subtitle Style Controls Start
+//Subtitle Style
 $this->start_controls_section('slider_subtitle_style', [
     'label' => __('Subtitle Style', 'appto-extension'),
     'tab' => \Elementor\Controls_Manager::TAB_STYLE,
 ]);
 
-$this->add_control(
-    'subtitle_color',
-    [
-        'label' => __('Text Color', 'appto-extension'),
-        'type' => \Elementor\Controls_Manager::COLOR,
-        'default' => '#fefefe',
-        'selectors' => [
-            '{{WRAPPER}} .subtitle' => 'color: {{VALUE}};',
-        ]
+$this->color_typography_controls(array(
+    'id' => 'banner_slider_subtitle',
+    'selectors' => [
+        '{{WRAPPER}} .subtitle'
     ]
-);
+));
 
 $this->end_controls_section();
-//Subtitle Style Controls End
+//Subtitle Style Ends

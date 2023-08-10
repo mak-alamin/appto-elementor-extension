@@ -40,7 +40,7 @@ trait Controls
      * Color & Typography Controls
      */
     public function color_typography_controls(array $args)
-    {
+    {  
         $defaults = array(
             'id' => '',
             'selectors' => array(),

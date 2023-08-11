@@ -17,7 +17,7 @@ class Tab_Horizon extends \Elementor\Widget_Base
 
 	public function get_title()
 	{
-		return __('Tab Horizon', 'appto-extension');
+		return __('Tab Slider', 'appto-extension');
 	}
 
 	public function get_icon(): string
@@ -28,6 +28,20 @@ class Tab_Horizon extends \Elementor\Widget_Base
 	public function get_categories(): array
 	{
 		return ['appto-widgets'];
+	}
+
+	public function get_keywords()
+	{
+		return [
+			'appto',
+			'appto tab',
+			'appto slider',
+			'tab',
+			'slider',
+			'tab slider',
+			'tabs',
+			'tab slide',
+		];
 	}
 
 	protected function _register_controls()
@@ -44,13 +58,6 @@ class Tab_Horizon extends \Elementor\Widget_Base
 	{
 		$tabs = $this->get_settings_for_display()['horizon_tabs'];
 		$phone_image = $this->get_settings_for_display()['phone_bg_image'];
-
-		// echo '<pre>';
-		// print_r($tabs);
-		// echo '</pre>';
-		// die();
-		
-
 ?>
 		<div class="tab tab-horizon col-sm-6">
 			<div class="tab-menu text-center">
@@ -65,13 +72,12 @@ class Tab_Horizon extends \Elementor\Widget_Base
 
 						echo "<li class='owl-dot $active' data-id='tab_horizon_$id'>";
 
-						echo "<a href='#tab_horizon_$id' data-toggle='tab'>
-							<div class='icon icon-sm'>
+						echo "<div class='icon icon-sm'>
 								<span class='$icon_class'></span>
 							</div>";
 
 						echo $tab['tab_label'];
-						echo "</a></li>";
+						echo "</li>";
 					}
 					?>
 				</ul>
@@ -141,11 +147,11 @@ class Tab_Horizon extends \Elementor\Widget_Base
 				})
 
 				jQuery('.owl-dot').on('click', function() {
-					$appSlide.trigger('to.owl.carousel', [$(this).index(), 300]);
+					$appSlide.trigger('to.owl.carousel', [jQuery(this).index(), 300]);
 
 					jQuery(".tab-horizon .tab-content .tab-pane").removeClass("active");
 
-					var currentTab = '#'+jQuery(this).data("id");
+					var currentTab = '#' + jQuery(this).data("id");
 
 					jQuery(currentTab).addClass("active");
 				});

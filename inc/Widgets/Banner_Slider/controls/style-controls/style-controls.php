@@ -14,6 +14,7 @@ $this->add_control(
         'default' => 'wave',
         'options' => [
             'flat' => esc_html__('Flat', 'appto-extension'),
+            'angle' => esc_html__('Angle', 'appto-extension'),
             'wave' => esc_html__('Wave', 'appto-extension'),
             'wave-zig' => esc_html__('Wave Zig', 'appto-extension'),
         ],

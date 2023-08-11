@@ -12,7 +12,7 @@ class Banner_Slider extends \Elementor\Widget_Base
 
 	private $anim_file = '';
 	private $bg_grdnt = 'blue'; //grdnt-blue 
-	private $bg_style = 'wave'; //wave, wave-zig
+	private $bg_style = 'wave'; //flat, angle, wave, wave-zig
 
 	public function get_name(): string
 	{

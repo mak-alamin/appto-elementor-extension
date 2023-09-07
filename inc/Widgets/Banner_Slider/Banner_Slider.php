@@ -42,6 +42,7 @@ class Banner_Slider extends \Elementor\Widget_Base
 	public function get_script_depends()
 	{
 		return [
+			'jquery',
 			'owl-carousel-js',
 			'bundle-js',
 			'twinlight-js',

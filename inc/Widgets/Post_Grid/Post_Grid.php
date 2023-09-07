@@ -59,7 +59,7 @@ class Post_Grid extends \Elementor\Widget_Base
 
     public function get_script_depends()
     {
-        return [];
+        return ['jquery'];
     }
 
     protected function render()

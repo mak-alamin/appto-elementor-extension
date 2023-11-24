@@ -14,6 +14,17 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
+// SVG + XML File uploads
+function appto_custom_mime_types($mimes)
+{
+  $mimes['xml'] = 'application/xml';
+  $mimes['svg'] = 'image/svg+xml';
+  $mimes['svgz'] = 'image/svg+xml';
+
+  return $mimes;
+}
+add_filter('upload_mimes', 'appto_custom_mime_types');
+
 /**
  * Main AppTo Elementor Extension Class
  *

@@ -4,7 +4,7 @@
  * Plugin Name: AppTo Elementor Extension
  * Description: AppTo Elementor extension with advanced features
  * Plugin URI:  https://
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Mak Alamin
  * Author URI:  https://
  * Text Domain: appto-extension

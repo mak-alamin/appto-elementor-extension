@@ -26,6 +26,14 @@ function appto_custom_mime_types($mimes)
 add_filter('upload_mimes', 'appto_custom_mime_types');
 
 /**
+ * Enqueue Scripts
+ */
+add_action('wp_enqueue_scripts', 'appto_elementor_ext_load_scripts');
+function appto_elementor_ext_load_scripts() {
+	wp_enqueue_style('appto_fontawesome', plugins_url('/assets/css/font-awesome.css', __FILE__) , null, time(), false);
+}
+
+/**
  * Main AppTo Elementor Extension Class
  *
  * The main class that initiates and runs the plugin.

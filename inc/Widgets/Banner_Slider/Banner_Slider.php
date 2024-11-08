@@ -44,10 +44,10 @@ class Banner_Slider extends \Elementor\Widget_Base
 		return [
 			'jquery',
 			'owl-carousel-js',
-			'bundle-js',
+			'appto-bundle-js',
 			'twinlight-js',
 			'wavify-jquery',
-			'main-js'
+			'appto-main-js'
 		];
 	}
 

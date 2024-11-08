@@ -44,11 +44,6 @@ class Carousel extends \Elementor\Widget_Base
     {
         $images = $this->get_settings_for_display()['image_carousel_gallery'];
 
-        // echo '<pre>';
-        // print_r($images);
-        // echo '</pre>';
-        // die();
-
 ?>
         <div class="screenshot carousel slide carousel-fade">
             <div class="owl-carousel screen nplr screen-loop">

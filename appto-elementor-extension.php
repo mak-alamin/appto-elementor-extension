@@ -134,7 +134,6 @@ final class AppTo_Elementor_Extension
 	 */
 	public function i18n()
 	{
-
 		load_plugin_textdomain('appto-extension');
 	}
 
@@ -364,7 +363,6 @@ final class AppTo_Elementor_Extension
 	 */
 	public function admin_notice_minimum_php_version()
 	{
-
 		if (isset($_GET['activate'])) unset($_GET['activate']);
 
 		$message = sprintf(

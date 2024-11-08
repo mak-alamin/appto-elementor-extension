@@ -1,0 +1,67 @@
+<?php
+// Tabs
+$this->start_controls_section(
+    'appto_testimonial_content',
+    [
+        'label' => __('Testimonials', 'appto-extension'),
+        'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+    ]
+);
+
+//Tab Items
+$this->add_control(
+    'appto_testimonials',
+    [
+        'label' => __('Testimonials', 'appto-extension'),
+        'type' => \Elementor\Controls_Manager::REPEATER,
+        'fields' => [
+            [
+                'name' => 'content',
+                'label' => __('Content', 'appto-extension'),
+                'type' => \Elementor\Controls_Manager::WYSIWYG, // WYSIWYG
+                'placeholder' => __('Content here', 'appto-extension'),
+            ],
+            [
+                'name' => 'client_name',
+                'label' => __('Name', 'appto-extension'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => __('Client Name Here', 'appto-extension'),
+                'default' => __('John Doe', 'appto-extension'),
+            ],
+            [
+                'name' => 'title',
+                'label' => __('Title', 'appto-extension'),
+                'type' => \Elementor\Controls_Manager::TEXT,
+                'placeholder' => __('Client Title here', 'appto-extension'),
+            ],
+            [
+                'name'    => 'image',
+                'label' => __('Client Image', 'appto-extension'),
+                'type'     => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        ],
+        'default' => [
+            [
+                'client_name' => __('Roger Bentham', 'appto-extension'),
+                'title' => 'Author, Magento',
+                'content' => 'Lorem ipsum dolor sit amet, eu debet utinam vim. Idque accusam ea sit repudiandae id. Quo ex alia natum tritani, dolorum persequeris.',
+            ],
+            [
+                'client_name' => __('Roger Bentham', 'appto-extension'),
+                'title' => 'Author, Magento',
+                'content' => 'Lorem ipsum dolor sit amet, eu debet utinam vim. Idque accusam ea sit repudiandae id. Quo ex alia natum tritani, dolorum persequeris.',
+            ],
+            [
+                'client_name' => __('Paulo Mark', 'appto-extension'),
+                'title' => 'CEO, It Founadtion',
+                'content' => 'Lorem ipsum dolor sit amet, eu debet utinam vim. Idque accusam ea sit repudiandae id. Quo ex alia natum tritani, dolorum persequeris.',
+            ],
+        ],
+    ]
+);
+
+$this->end_controls_section();
+//Content Controls Section Ends
